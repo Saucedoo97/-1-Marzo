@@ -1,0 +1,20 @@
+Jaime Saucedo: function dxdt = Ejercicio5(t,x)
+A = 0.4;
+B = 0.4;
+C = 2;
+D = 0.09;
+dxdt = [A*x(1) - B*x(1)*x(2); D*x(1)*x(2) - C*x(2)];
+end
+
+
+
+
+function [t,x] = call_Ejercicio5
+    tspan = [0; 50];
+    y0 = [100; 8];
+    [t, x] = ode45(@Ejercicio5, tspan, y0);
+    subplot(2,1,1);
+    plot(t,x(:,1))
+    subplot(2,1,2);
+    plot(t,x(:,2))
+end
